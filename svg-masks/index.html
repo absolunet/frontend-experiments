@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width"/>
+
+		<style type="text/css">
+
+			body { margin: 0; }
+			.container { position: relative; width: 300px; height: 300px; overflow:hidden;  -webkit-clip-path: circle(150px at 150px 150px); }
+			.container .image { position: absolute; display: block; width: 100%; height: 100%; }
+			.container .text { position: absolute; width: 100%; height: 100%; background-color:rgba(35, 156, 234, .75); overflow: hidden; }
+			
+		</style>
+
+	</head>
+	<body>
+
+		<div class="container">
+			<img class="image" src="http://placekitten.com/g/300/300" alt="" />
+			<div class="text"></div>
+		</div>
+
+	</body>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
+	<script type="text/javascript">
+
+		var container = document.querySelector('.container');
+		var text = container.querySelector('.text');
+
+		container.addEventListener('mouseenter', function() {
+			TweenMax.to(text, 0.5, { top:'0%', ease:Expo.easeOut });
+		}, false);
+		container.addEventListener('mouseleave', function() {
+			TweenMax.to(text, 0.5, { top:'-100%', ease:Expo.easeOut });
+		}, false);
+
+		TweenMax.set(text, { top:'-100%' });
+
+	</script>
+
+</html>
